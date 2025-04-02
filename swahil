@@ -59,3 +59,18 @@ git push
 git add requirements.txt
 git commit -m "Fix requirements.txt encoding"
 git push
+/swahili-ai-assistant
+  ├── app.py
+  ├── interface.py
+  ├── requirements.txt
+pip install fastapi uvicorn
+source venv/bin/activate  # (Mac/Linux)
+venv\Scripts\activate  # (Windows)
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Hello, Swahili AI Assistant!"}
+uvicorn app:app --host 0.0.0.0 --port 8000
