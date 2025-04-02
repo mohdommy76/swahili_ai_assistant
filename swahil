@@ -40,9 +40,7 @@ if st.button("Translate to Swahili"):
         response = requests.post("http://127.0.0.1:8000/translate/", json={"text": text_input})
         translated_text = response.json().get("translated_text", "Translation failed.")
         st.subheader("Swahili Translation:")
-        st.write(translated_text)
-    else:
-        st.warning("Please enter some text first.")
+        st.write(translated_text) else:st.warning("Please enter some text first.")
 fastapi
 uvicorn
 streamlit
@@ -55,3 +53,6 @@ git add .
 git commit -m "Initial commit"
 git remote add origin <YOUR_GITHUB_REPO_URL>
 git push -u origin master
+git add requirements.txt
+git commit -m "Fix requirements.txt encoding"
+git push
