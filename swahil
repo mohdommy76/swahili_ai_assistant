@@ -56,3 +56,6 @@ git push -u origin master
 git add requirements.txt
 git commit -m "Fix requirements.txt encoding"
 git push
+git add requirements.txt
+git commit -m "Fix requirements.txt encoding"
+git push
