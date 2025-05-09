@@ -1,0 +1,10 @@
+from gtts import gTTS
+import uuid
+import os
+
+@app.post("/tts/")
+def text_to_speech(text: str = Body(..., embed=True)):
+    tts = gTTS(text, lang='sw')
+    filename = f"{uuid.uuid4()}.mp3"
+    tts.save(filename)
+    return {"message": "Speech created", "file": filename}
