@@ -1,0 +1,20 @@
+from fastapi import FastAPI
+from transformers import pipeline
+
+# Initialize FastAPI app
+app = FastAPI()
+
+# Load the Swahili research AI model
+qa_pipeline = pipeline("text-classification", model="path/to/your/swahili_model")
+
+# Define a simple route to test the chatbot
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Swahili Chatbot!"}
+
+# Create a route to process user input and get a response
+@app.get("/chat")
+def chat(input_text: str):
+    # Get chatbot response
+    response = qa_pipeline(input_text)
+    return {"response": response}
