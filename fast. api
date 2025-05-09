@@ -4,3 +4,10 @@ git commit -m "Initial commit"
 git branch -M main
 git remote add origin https://github.com/your-username/your-repo.git
 git push -u origin main
+fetch("https://your-backend-url.com/chat", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ user_input: inputText }),
+})
