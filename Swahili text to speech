@@ -1,0 +1,13 @@
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+
+# Load summarization model
+sum_model_name = "google/mt5-small"
+sum_tokenizer = AutoTokenizer.from_pretrained(sum_model_name)
+sum_model = AutoModelForSeq2SeqLM.from_pretrained(sum_model_name)
+
+@app.post("/summarize/")
+def summarize(text: str = Body(..., embed=True)):
+    inputs = sum_tokenizer.encode(text, return_tensors="pt", max_length=512, truncation=True)
+    summary_ids = sum_model.generate(inputs, max_length=100, min_length=30, length_penalty=5.0)
+    summary = sum_tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    return {"original_text": text, "summary": summary}
