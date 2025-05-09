@@ -11,3 +11,11 @@ fetch("https://your-backend-url.com/chat", {
     },
     body: JSON.stringify({ user_input: inputText }),
 })
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace "*" with your frontend domain for security
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
