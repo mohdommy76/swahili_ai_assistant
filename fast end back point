@@ -1,0 +1,29 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+import openai  # or any other NLP model you're using, like Hugging Face
+
+app = FastAPI()
+
+# Define a model for the incoming request
+class ChatMessage(BaseModel):
+    message: str
+
+# Chatbot response using GPT, Swahili model, or any NLP system
+@app.post("/chatbot")
+async def chat_with_bot(chat_message: ChatMessage):
+    user_message = chat_message.message
+
+    # Example: Using OpenAI (GPT) to generate a response
+    openai.api_key = "your-openai-api-key"  # Replace with your API key
+    
+    # Generate a response using OpenAI's API
+    response = openai.Completion.create(
+        engine="text-davinci-003",  # You can choose the model you prefer
+        prompt=user_message,
+        max_tokens=150
+    )
+
+    # Extract the response text
+    chatbot_response = response.choices[0].text.strip()
+
+    return {"response": chatbot_response}
