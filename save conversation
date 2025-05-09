@@ -1,0 +1,17 @@
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+
+app = FastAPI()
+
+# Data model for conversation
+class Conversation(BaseModel):
+    user_input: str
+    bot_response: str
+
+# In-memory storage (replace with DB later)
+conversation_history = []
+
+@app.post("/save_conversation")
+def save_conversation(conversation: Conversation):
+    conversation_history.append(conversation.dict())
+    return {"message": "Conversation saved successfully", "data": conversation.dict()}
