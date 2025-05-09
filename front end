@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+</head>
+<body>
+    <h1>Swahili AI Chatbot</h1>
+
+    <div>
+        <label for="messageInput">Ask the chatbot:</label>
+        <input type="text" id="messageInput" placeholder="Type your message here">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <div id="responseContainer">
+        <p><strong>Response:</strong> <span id="responseText">...</span></p>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const message = document.getElementById("messageInput").value;
+
+            // Ensure there's text to send
+            if (message.trim() === "") {
+                alert("Please type a message.");
+                return;
+            }
+
+            fetch("http://your-render-app-url/chatbot
