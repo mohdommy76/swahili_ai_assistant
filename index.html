@@ -61,3 +61,28 @@ fetch("http://127.0.0.1:8000/chat", {
     },
     body: JSON.stringify({ user_input: inputText }),
 })
+fetch("http://127.0.0.1:8000/chat", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ user_input: inputText }),
+})
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace "*" with your frontend domain for security
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+curl -X POST http://127.0.0.1:8000/chat \
+-H "Content-Type: application/json" \
+-d '{"user_input": "hello"}'
+fetch("https://your-backend-url.com/chat", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ user_input: inputText }),
+})
