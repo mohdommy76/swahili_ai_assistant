@@ -1,0 +1,4 @@
+from transformers import pipeline
+
+# Use a smaller model for faster inference
+model = pipeline("text-generation", model="distilgpt2")
