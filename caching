@@ -1,0 +1,6 @@
+from functools import lru_cache
+
+@lru_cache(maxsize=100)
+def process_input(input_text: str):
+    # Simulate a resource-intensive operation
+    return f"Processed: {input_text}"
