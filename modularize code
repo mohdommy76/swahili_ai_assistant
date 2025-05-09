@@ -1,0 +1,9 @@
+project/
+├── app.py            # Entry point
+├── routes/
+│   ├── chat.py       # Chat-related endpoints
+│   ├── health.py     # Health check endpoint
+├── models/
+│   ├── conversation.py # Pydantic models
+├── services/
+│   ├── caching.py    # Caching logic
